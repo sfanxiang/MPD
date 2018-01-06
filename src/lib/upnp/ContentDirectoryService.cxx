@@ -71,7 +71,7 @@ ContentDirectoryService::getSearchCapabilities(UpnpClient_Handle hdl) const
 	const char *s = ixmlwrap::getFirstElementValue(response.get(),
 						       "SearchCaps");
 	if (s == nullptr || *s == 0)
-		return {};
+		return std::forward_list<std::basic_string<char> >{};
 
 	return SplitString(s, ',', false);
 }
